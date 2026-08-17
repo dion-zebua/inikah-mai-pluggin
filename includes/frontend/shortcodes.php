@@ -27,7 +27,7 @@ if (! class_exists('Inikah_Mai\\FrontEnd\\Shortcodes')) {
             return [
                 'mai_site_title' => 'Display the website title.',
                 'mai_site_slogan' => 'Display the website slogan.',
-                'mai_site_url' => 'Displays the website URL.',
+                'mai_site_url' => 'Display the website URL.',
                 'mai_page_url'    => 'Display the current page URL.',
                 'mai_page_title' => 'Display the current page title.',
             ];
@@ -53,7 +53,6 @@ if (! class_exists('Inikah_Mai\\FrontEnd\\Shortcodes')) {
         {
             return esc_html(get_the_title());
         }
-
 
 
 
