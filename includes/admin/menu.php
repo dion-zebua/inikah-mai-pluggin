@@ -15,6 +15,8 @@ if (! class_exists('Inikah_Mai\\Admin\\Menu')) {
         private function __construct()
         {
             add_action('admin_menu', array($this, 'menu'));
+
+            add_filter('plugin_action_links_' . plugin_basename(INIKAH_MAI__FILE), array($this, 'settings'));
         }
 
         public function menu()
@@ -66,6 +68,17 @@ if (! class_exists('Inikah_Mai\\Admin\\Menu')) {
 
             add_submenu_page(
                 INIKAH_MAI_SETTINGS_SLUG,
+                'Shortcodes',
+                'Shortcodes',
+                'manage_options',
+                INIKAH_MAI_SETTINGS_SLUG . '-shortcodes',
+                function () {
+                    require_once INIKAH_MAI__DIR_PATH . 'includes/admin/pages/shortcodes.php';
+                }
+            );
+
+            add_submenu_page(
+                INIKAH_MAI_SETTINGS_SLUG,
                 'Request Feature',
                 'Request Feature',
                 'manage_options',
@@ -75,6 +88,25 @@ if (! class_exists('Inikah_Mai\\Admin\\Menu')) {
                     exit;
                 }
             );
+        }
+
+
+        public function settings(array $links)
+        {
+
+            $settings_url = admin_url(
+                'admin.php?page=' . INIKAH_MAI_SETTINGS_SLUG
+            );
+
+            $settings_link = sprintf(
+                '<a href="%s">%s</a>',
+                esc_url($settings_url),
+                __('Pengaturan', 'inikah-mai')
+            );
+
+            array_unshift($links, $settings_link);
+
+            return $links;
         }
 
 

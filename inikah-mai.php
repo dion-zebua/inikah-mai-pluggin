@@ -66,19 +66,4 @@ if (!defined('INIKAH_MAI__TEXT_COLOR')) {
     define('INIKAH_MAI__TEXT_COLOR', '#ffffff');
 }
 
-add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) {
-
-    $settings_url = admin_url('admin.php?page=' . INIKAH_MAI_SETTINGS_SLUG);
-
-    $settings_link = sprintf(
-        '<a href="%s">%s</a>',
-        esc_url($settings_url),
-        __('Pengaturan', INIKAH_MAI_SETTINGS_SLUG)
-    );
-
-    array_unshift($links, $settings_link);
-
-    return $links;
-});
-
 require_once INIKAH_MAI__DIR_PATH . 'includes/main.php';

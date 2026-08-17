@@ -6,7 +6,6 @@ if (!defined('ABSPATH')) {
 $login_url  = wp_login_url();
 $login_path = trim(wp_parse_url($login_url, PHP_URL_PATH), '/');
 
-echo $login_path;
 ?>
 
 
